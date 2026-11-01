@@ -5,13 +5,13 @@ import PackageDescription
 let package = Package(
     name: "CreatorShortVideoApp",
     platforms: [
-        .iOS(.v18)
+        .iOS(.v18),
+        .macOS(.v13)
     ],
     products: [
         .library(name: "CreatorShortVideoApp", targets: ["CreatorShortVideoApp"])
     ],
     targets: [
-        .target(name: "CreatorShortVideoApp"),
-        .testTarget(name: "CreatorShortVideoAppTests", dependencies: ["CreatorShortVideoApp"])
+        .target(name: "CreatorShortVideoApp")
     ]
 )
