@@ -400,6 +400,9 @@
 				DEVELOPMENT_TEAM = 2NJF58VSB9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos and videos.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to capture sound for videos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We would like to safe captured fotos and videos in your Photos folder.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +431,9 @@
 				DEVELOPMENT_TEAM = 2NJF58VSB9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos and videos.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to capture sound for videos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We would like to safe captured fotos and videos in your Photos folder.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
