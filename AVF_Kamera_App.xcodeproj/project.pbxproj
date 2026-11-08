@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		56BAA03E309E184B00CDBA1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56BAA028309E184800CDBA1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56BAA02F309E184800CDBA1B;
+			remoteInfo = AVF_Kamera_App;
+		};
+		56BAA048309E184B00CDBA1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56BAA028309E184800CDBA1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56BAA02F309E184800CDBA1B;
+			remoteInfo = AVF_Kamera_App;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		56BAA030309E184800CDBA1B /* AVF_Kamera_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVF_Kamera_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56BAA03D309E184B00CDBA1B /* AVF_Kamera_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVF_Kamera_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56BAA047309E184B00CDBA1B /* AVF_Kamera_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVF_Kamera_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		568D13B1309E41A000570CBE /* Exceptions for "AVF_Kamera_App" folder in "AVF_Kamera_App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"AVF-Kamera-App-Info.plist",
+			);
+			target = 56BAA02F309E184800CDBA1B /* AVF_Kamera_App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		56BAA032309E184800CDBA1B /* AVF_Kamera_App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				568D13B1309E41A000570CBE /* Exceptions for "AVF_Kamera_App" folder in "AVF_Kamera_App" target */,
+			);
+			path = AVF_Kamera_App;
+			sourceTree = "<group>";
+		};
+		56BAA040309E184B00CDBA1B /* AVF_Kamera_AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AVF_Kamera_AppTests;
+			sourceTree = "<group>";
+		};
+		56BAA04A309E184B00CDBA1B /* AVF_Kamera_AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AVF_Kamera_AppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		56BAA02D309E184800CDBA1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BAA03A309E184B00CDBA1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BAA044309E184B00CDBA1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		56BAA027309E184800CDBA1B = {
+			isa = PBXGroup;
+			children = (
+				56BAA032309E184800CDBA1B /* AVF_Kamera_App */,
+				56BAA040309E184B00CDBA1B /* AVF_Kamera_AppTests */,
+				56BAA04A309E184B00CDBA1B /* AVF_Kamera_AppUITests */,
+				56BAA031309E184800CDBA1B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		56BAA031309E184800CDBA1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				56BAA030309E184800CDBA1B /* AVF_Kamera_App.app */,
+				56BAA03D309E184B00CDBA1B /* AVF_Kamera_AppTests.xctest */,
+				56BAA047309E184B00CDBA1B /* AVF_Kamera_AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		56BAA02F309E184800CDBA1B /* AVF_Kamera_App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56BAA051309E184B00CDBA1B /* Build configuration list for PBXNativeTarget "AVF_Kamera_App" */;
+			buildPhases = (
+				56BAA02C309E184800CDBA1B /* Sources */,
+				56BAA02D309E184800CDBA1B /* Frameworks */,
+				56BAA02E309E184800CDBA1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				56BAA032309E184800CDBA1B /* AVF_Kamera_App */,
+			);
+			name = AVF_Kamera_App;
+			packageProductDependencies = (
+			);
+			productName = AVF_Kamera_App;
+			productReference = 56BAA030309E184800CDBA1B /* AVF_Kamera_App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		56BAA03C309E184B00CDBA1B /* AVF_Kamera_AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56BAA054309E184B00CDBA1B /* Build configuration list for PBXNativeTarget "AVF_Kamera_AppTests" */;
+			buildPhases = (
+				56BAA039309E184B00CDBA1B /* Sources */,
+				56BAA03A309E184B00CDBA1B /* Frameworks */,
+				56BAA03B309E184B00CDBA1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56BAA03F309E184B00CDBA1B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				56BAA040309E184B00CDBA1B /* AVF_Kamera_AppTests */,
+			);
+			name = AVF_Kamera_AppTests;
+			packageProductDependencies = (
+			);
+			productName = AVF_Kamera_AppTests;
+			productReference = 56BAA03D309E184B00CDBA1B /* AVF_Kamera_AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		56BAA046309E184B00CDBA1B /* AVF_Kamera_AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56BAA057309E184B00CDBA1B /* Build configuration list for PBXNativeTarget "AVF_Kamera_AppUITests" */;
+			buildPhases = (
+				56BAA043309E184B00CDBA1B /* Sources */,
+				56BAA044309E184B00CDBA1B /* Frameworks */,
+				56BAA045309E184B00CDBA1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56BAA049309E184B00CDBA1B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				56BAA04A309E184B00CDBA1B /* AVF_Kamera_AppUITests */,
+			);
+			name = AVF_Kamera_AppUITests;
+			packageProductDependencies = (
+			);
+			productName = AVF_Kamera_AppUITests;
+			productReference = 56BAA047309E184B00CDBA1B /* AVF_Kamera_AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		56BAA028309E184800CDBA1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					56BAA02F309E184800CDBA1B = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					56BAA03C309E184B00CDBA1B = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 56BAA02F309E184800CDBA1B;
+					};
+					56BAA046309E184B00CDBA1B = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 56BAA02F309E184800CDBA1B;
+					};
+				};
+			};
+			buildConfigurationList = 56BAA02B309E184800CDBA1B /* Build configuration list for PBXProject "AVF_Kamera_App" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 56BAA027309E184800CDBA1B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 56BAA031309E184800CDBA1B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				56BAA02F309E184800CDBA1B /* AVF_Kamera_App */,
+				56BAA03C309E184B00CDBA1B /* AVF_Kamera_AppTests */,
+				56BAA046309E184B00CDBA1B /* AVF_Kamera_AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		56BAA02E309E184800CDBA1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BAA03B309E184B00CDBA1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BAA045309E184B00CDBA1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		56BAA02C309E184800CDBA1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BAA039309E184B00CDBA1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56BAA043309E184B00CDBA1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		56BAA03F309E184B00CDBA1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56BAA02F309E184800CDBA1B /* AVF_Kamera_App */;
+			targetProxy = 56BAA03E309E184B00CDBA1B /* PBXContainerItemProxy */;
+		};
+		56BAA049309E184B00CDBA1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56BAA02F309E184800CDBA1B /* AVF_Kamera_App */;
+			targetProxy = 56BAA048309E184B00CDBA1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		56BAA04F309E184B00CDBA1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		56BAA050309E184B00CDBA1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		56BAA052309E184B00CDBA1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AVF-Kamera-App-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Diese App benötigt Zugriff auf die Kamera, um Fotos und Videos zu machen";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Diese App benötigt Zugriff auf das Mikrofon, um Videos mit Ton aufzunehmen.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Diese App benötigt Zugriff auf die Gallerie, um Medien zu speichern.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thies.learning.AVF-Kamera-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		56BAA053309E184B00CDBA1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AVF-Kamera-App-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Diese App benötigt Zugriff auf die Kamera, um Fotos und Videos zu machen";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Diese App benötigt Zugriff auf das Mikrofon, um Videos mit Ton aufzunehmen.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Diese App benötigt Zugriff auf die Gallerie, um Medien zu speichern.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thies.learning.AVF-Kamera-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		56BAA055309E184B00CDBA1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thies.learning.AVF-Kamera-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AVF_Kamera_App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AVF_Kamera_App";
+			};
+			name = Debug;
+		};
+		56BAA056309E184B00CDBA1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thies.learning.AVF-Kamera-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AVF_Kamera_App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AVF_Kamera_App";
+			};
+			name = Release;
+		};
+		56BAA058309E184B00CDBA1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thies.learning.AVF-Kamera-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AVF_Kamera_App;
+			};
+			name = Debug;
+		};
+		56BAA059309E184B00CDBA1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2NJF58VSB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "thies.learning.AVF-Kamera-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AVF_Kamera_App;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		56BAA02B309E184800CDBA1B /* Build configuration list for PBXProject "AVF_Kamera_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56BAA04F309E184B00CDBA1B /* Debug */,
+				56BAA050309E184B00CDBA1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56BAA051309E184B00CDBA1B /* Build configuration list for PBXNativeTarget "AVF_Kamera_App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56BAA052309E184B00CDBA1B /* Debug */,
+				56BAA053309E184B00CDBA1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56BAA054309E184B00CDBA1B /* Build configuration list for PBXNativeTarget "AVF_Kamera_AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56BAA055309E184B00CDBA1B /* Debug */,
+				56BAA056309E184B00CDBA1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56BAA057309E184B00CDBA1B /* Build configuration list for PBXNativeTarget "AVF_Kamera_AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56BAA058309E184B00CDBA1B /* Debug */,
+				56BAA059309E184B00CDBA1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 56BAA028309E184800CDBA1B /* Project object */;
+}
