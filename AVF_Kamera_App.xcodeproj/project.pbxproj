@@ -29,9 +29,22 @@
 		56BAA047309E184B00CDBA1B /* AVF_Kamera_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVF_Kamera_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		568D13B1309E41A000570CBE /* Exceptions for "AVF_Kamera_App" folder in "AVF_Kamera_App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"AVF-Kamera-App-Info.plist",
+			);
+			target = 56BAA02F309E184800CDBA1B /* AVF_Kamera_App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		56BAA032309E184800CDBA1B /* AVF_Kamera_App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				568D13B1309E41A000570CBE /* Exceptions for "AVF_Kamera_App" folder in "AVF_Kamera_App" target */,
+			);
 			path = AVF_Kamera_App;
 			sourceTree = "<group>";
 		};
@@ -400,6 +413,10 @@
 				DEVELOPMENT_TEAM = 2NJF58VSB9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AVF-Kamera-App-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Diese App benötigt Zugriff auf die Kamera, um Fotos und Videos zu machen";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Diese App benötigt Zugriff auf das Mikrofon, um Videos mit Ton aufzunehmen.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Diese App benötigt Zugriff auf die Gallerie, um Medien zu speichern.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +445,10 @@
 				DEVELOPMENT_TEAM = 2NJF58VSB9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AVF-Kamera-App-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Diese App benötigt Zugriff auf die Kamera, um Fotos und Videos zu machen";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Diese App benötigt Zugriff auf das Mikrofon, um Videos mit Ton aufzunehmen.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Diese App benötigt Zugriff auf die Gallerie, um Medien zu speichern.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
