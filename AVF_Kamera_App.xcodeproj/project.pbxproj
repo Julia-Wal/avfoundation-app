@@ -29,9 +29,22 @@
 		56BAA047309E184B00CDBA1B /* AVF_Kamera_AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVF_Kamera_AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		568D13B1309E41A000570CBE /* Exceptions for "AVF_Kamera_App" folder in "AVF_Kamera_App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"AVF-Kamera-App-Info.plist",
+			);
+			target = 56BAA02F309E184800CDBA1B /* AVF_Kamera_App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		56BAA032309E184800CDBA1B /* AVF_Kamera_App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				568D13B1309E41A000570CBE /* Exceptions for "AVF_Kamera_App" folder in "AVF_Kamera_App" target */,
+			);
 			path = AVF_Kamera_App;
 			sourceTree = "<group>";
 		};
