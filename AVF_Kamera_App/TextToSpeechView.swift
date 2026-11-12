@@ -38,7 +38,7 @@ struct TextToSpeechView: View {
                 
                 HStack{
                     
-                    Button("Vorlesen") {
+                    Button("Read out loud") {
                         let utterance = AVSpeechUtterance(
                             string: text
                         )

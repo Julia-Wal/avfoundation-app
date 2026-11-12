@@ -16,6 +16,9 @@ struct MediaThumbnail: Identifiable {
     let id = UUID()
     let image: UIImage
     let isVideo: Bool // Thumbnail nur wenn Video obv
+    
+    let fileName: String
+    let creationTime: Date
 }
 
 struct ProjectView: View {
@@ -100,15 +103,18 @@ struct ProjectView: View {
                                         }
                                     }
                                     // Dateiname
-                                                Text("Dateiname")
+                                    Text(media.filename)
                                                     .font(.caption)
                                                     .fontWeight(.medium)
                                                     .lineLimit(1)
 
                                                 // Erstellungsdatum
-                                                Text("03.11.2026")
-                                                    .font(.caption2)
-                                                    .foregroundStyle(.secondary)
+                                    Text(media.creationDate.formatted(
+                                                date: .numeric,
+                                                time: .shortened
+                                            ))
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
                                 }
                             }
                             .padding()
@@ -160,7 +166,10 @@ struct ProjectView: View {
                        let image = UIImage(data: data) {
                         
                         mediaThumbnails.append(
-                            MediaThumbnail(image: image, isVideo: false)
+                            MediaThumbnail(image: image,
+                                           isVideo: false,
+                                           fileName: fileURL.lastPathComponent,
+                                           creationDate: Date())
                         )
                         
                         continue
@@ -173,7 +182,10 @@ struct ProjectView: View {
                         if let thumbnail = generateThumbnail(url: movie.url) {
                             
                             mediaThumbnails.append(
-                                MediaThumbnail(image: thumbnail, isVideo: true)
+                                MediaThumbnail(image: thumbnail,
+                                               isVideo: true,
+                                               fileName: fileURL.lastPathComponent,
+                                               creationDate: Date())
                             )
                         }
                     }
