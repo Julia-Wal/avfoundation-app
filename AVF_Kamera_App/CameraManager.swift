@@ -51,6 +51,38 @@ class CameraManager : NSObject, ObservableObject {
         }
     }
     
+    private func getBestCamera(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let discoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [
+                .builtInTripleCamera,
+                .builtInDualWideCamera,
+                .builtInDualCamera,
+                .builtInWideAngleCamera
+            ],
+            mediaType: .video,
+            position: position,
+        )
+
+        let availableCameras = discoverySession.devices
+
+        let preferredOrder: [AVCaptureDevice.DeviceType] = [
+            .builtInTripleCamera,
+            .builtInDualWideCamera,
+            .builtInDualCamera,
+            .builtInWideAngleCamera
+        ]
+
+        for cameraType in preferredOrder {
+            if let camera = availableCameras.first(where: {
+                $0.deviceType == cameraType
+            }) {
+                return camera
+            }
+        }
+
+        return nil
+    }
+    
     private func setupSession() {
         sessionQueue.async { [weak self] in
             guard let self = self else { return }
@@ -62,8 +94,10 @@ class CameraManager : NSObject, ObservableObject {
             }
             
             do {
-                guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: self.cameraPosition) else {
-                    print("Default video device is not available.")
+                guard let videoDevice = self.getBestCamera(
+                    position: self.cameraPosition
+                ) else {
+                    print("No suitable camera available.")
                     self.session.commitConfiguration()
                     return
                 }
