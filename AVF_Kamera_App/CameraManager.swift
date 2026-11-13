@@ -51,7 +51,7 @@ class CameraManager : NSObject, ObservableObject {
         }
     }
     
-    private func getBestCamera(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+    private func getBestCamera(position: AVCaptureDevice.Position) -> AVCaptureDevice? { // does this also work for photos? Bc mediaType is set to .video 
         let discoverySession = AVCaptureDevice.DiscoverySession(
             deviceTypes: [
                 .builtInTripleCamera,
