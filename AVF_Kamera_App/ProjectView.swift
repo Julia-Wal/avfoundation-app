@@ -87,34 +87,31 @@ struct ProjectView: View {
 
                                     ZStack {
 
-                                        Image(uiImage: media.image)
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 100, height: 100)
-                                            .clipped()
-                                            .cornerRadius(12)
+                                      Image(uiImage: media.image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .clipped()
+                                        .cornerRadius(12)
 
-                                        // Play-Symbol bei Videos
-                                        if media.isVideo {
-                                            Image(systemName: "play.circle.fill")
-                                                .font(.system(size: 30))
-                                                .foregroundStyle(.white)
-                                                .shadow(radius: 4)
-                                        }
+                                      // Play-Symbol bei Videos
+                                      if media.isVideo {
+                                        Image(systemName: "play.circle.fill")
+                                          .font(.system(size: 30))
+                                          .foregroundStyle(.white)
+                                          .shadow(radius: 4)
+                                      }
                                     }
-                                    // Dateiname
+                                    // display name 
                                     Text(media.filename)
-                                                    .font(.caption)
-                                                    .fontWeight(.medium)
-                                                    .lineLimit(1)
+                                        .font(.caption)
+                                        .fontWeight(.medium)
+                                        .lineLimit(1)
 
-                                                // Erstellungsdatum
-                                    Text(media.creationDate.formatted(
-                                                date: .numeric,
-                                                time: .shortened
-                                            ))
-                                            .font(.caption2)
-                                            .foregroundStyle(.secondary)
+                                    // display creation data
+                                    Text(media.creationDate.formatted(date: .numeric,time: .shortened))
+                                      .font(.caption2)
+                                      .foregroundStyle(.secondary)
                                 }
                             }
                             .padding()
@@ -255,6 +252,9 @@ struct ProjectView: View {
     }
 }
 
+
 #Preview {
     ProjectView()
 }
+
+
