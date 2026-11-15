@@ -12,13 +12,11 @@ import SwiftUI
 import PhotosUI
 import AVFoundation
 
+// Struct speichert nur Infos für Darstellung
 struct MediaThumbnail: Identifiable {
-    let id = UUID()
+    var id: UUID { project.id }
     let image: UIImage
-    let isVideo: Bool // Thumbnail nur wenn Video obv
-    
-    let fileName: String
-    let creationTime: Date
+    let project: Project // Thumbnail nur wenn Video obv
 }
 
 struct ProjectView: View {
@@ -27,7 +25,7 @@ struct ProjectView: View {
     @State private var searchText = ""
     @State private var newestFirst = true // newest first standard
     @State private var selectedItems: [PhotosPickerItem] = []
-    @State private var mediaThumbnails: [MediaThumbnail] = []
+    @State private var mediaThumbnails: [MediaThumbnail] = [] // Alle Pics sammeln
 
     var body: some View {
         
@@ -79,42 +77,43 @@ struct ProjectView: View {
                 
                 ScrollView {
                     LazyVGrid(
-                                columns: [GridItem(.adaptive(minimum: 100))],
-                                spacing: 10
-                            ) {
-
-                                ForEach(mediaThumbnails) { media in
-
-                                    ZStack {
-
-                                      Image(uiImage: media.image)
+                        columns: [GridItem(.adaptive(minimum: 100))],
+                        spacing: 10
+                    ) {
+                        ForEach(mediaThumbnails) { media in
+                            VStack(alignment: .leading, spacing: 4) {
+                                
+                                ZStack {
+                                    Image(uiImage: media.image)
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: 100, height: 100)
                                         .clipped()
                                         .cornerRadius(12)
-
-                                      // Play-Symbol bei Videos
-                                      if media.isVideo {
+                                    
+                                    // Play-Symbol bei Videos
+                                    if media.project.type == .video {
                                         Image(systemName: "play.circle.fill")
-                                          .font(.system(size: 30))
-                                          .foregroundStyle(.white)
-                                          .shadow(radius: 4)
-                                      }
+                                            .font(.system(size: 30))
+                                            .foregroundStyle(.white)
+                                            .shadow(radius: 4)
                                     }
-                                    // display name 
-                                    Text(media.filename)
-                                        .font(.caption)
-                                        .fontWeight(.medium)
-                                        .lineLimit(1)
-
-                                    // display creation data
-                                    Text(media.creationDate.formatted(date: .numeric,time: .shortened))
-                                      .font(.caption2)
-                                      .foregroundStyle(.secondary)
                                 }
+                                
+                                // Dateiname
+                                Text(media.project.name)
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .lineLimit(1)
+                                
+                                // Erstellungsdatum
+                                Text(media.project.createdAt, style: .date)
+                                    .font(.caption2)
+                                .foregroundStyle(.secondary)
                             }
-                            .padding()
+                        }
+                    }
+                    .padding()
                 }
                 
             } else {
@@ -145,46 +144,42 @@ struct ProjectView: View {
         .padding(.top)
         
         .onChange(of: selectedItems) {oldValue, newValue in
-            
             Task {
                 mediaThumbnails = []
                 
                 for item in newValue {
                     
                     // Prüfen, ob es ein Bild ist
-                    if let image = try? await item.loadTransferable(type: Image.self) {
-                        
-                        // SwiftUI Image in UIImage umwandeln können wir
-                        // nicht direkt. Deshalb laden wir die Bilddaten:
-                    }
-                    
-                    // Bilddaten laden
                     if let data = try? await item.loadTransferable(type: Data.self),
                        let image = UIImage(data: data) {
                         
-                        mediaThumbnails.append(
-                            MediaThumbnail(image: image,
-                                           isVideo: false,
-                                           fileName: fileURL.lastPathComponent,
-                                           creationDate: Date())
+                        // Bild vorerst temporär speichern
+                        let url = FileManager.default.temporaryDirectory
+                            .appendingPathComponent(UUID().uuidString + ".jpg")
+                        
+                        try? data.write(to: url)
+                        
+                        let project = Project(
+                            name: "Bild",
+                            type: .picture,
+                            fileName: url.lastPathComponent
                         )
+                        
+                        addProject(project, url: url)
                         
                         continue
                     }
                     
-                    // Falls kein Bild geladen werden konnte,
-                    // versuchen wir ein Video zu laden.
+                    // Falls kein Bild: Video laden
                     if let movie = try? await item.loadTransferable(type: VideoFile.self) {
                         
-                        if let thumbnail = generateThumbnail(url: movie.url) {
-                            
-                            mediaThumbnails.append(
-                                MediaThumbnail(image: thumbnail,
-                                               isVideo: true,
-                                               fileName: fileURL.lastPathComponent,
-                                               creationDate: Date())
-                            )
-                        }
+                        let project = Project(
+                            name: "Video",
+                            type: .video,
+                            fileName: movie.url.lastPathComponent
+                        )
+                        
+                        addProject(project, url: movie.url)
                     }
                 }
             }
@@ -211,27 +206,48 @@ struct ProjectView: View {
         }
     }
     
+    func addProject(_ project: Project, url: URL) {
+        var thumbnail: UIImage?
+
+        if project.type == .picture { // Bei Bild: Bild direkt laden
+            thumbnail = UIImage(contentsOfFile: url.path)
+        } else if project.type == .video { // Thumbnail aus Video generieren
+            thumbnail = generateThumbnail(url: url)
+        }
+
+        if let thumbnail = thumbnail {
+            mediaThumbnails.append(
+                MediaThumbnail(
+                    image: thumbnail,
+                    project: project
+                )
+            )
+        }
+    }
+    
+    
     func generateThumbnail(url: URL) -> UIImage? {
 
         let asset = AVURLAsset(url: url)
-        let generator = AVAssetImageGenerator(asset: asset)
+        let imgGenerator = AVAssetImageGenerator(asset: asset)
 
-        generator.appliesPreferredTrackTransform = true
+        imgGenerator.appliesPreferredTrackTransform = true
 
-        let time = CMTime(seconds: 1, preferredTimescale: 600)
-
-        guard let cgImage = try? generator.copyCGImage(
-            at: time,
+        guard let cgImage = try? imgGenerator.copyCGImage(
+            at: CMTimeMake(value: 0, timescale: 1),
             actualTime: nil
         ) else {
+            print("*** Error generating thumbnail")
             return nil
         }
 
-        return UIImage(cgImage: cgImage)
+        let thumbnail = UIImage(cgImage: cgImage)
+        return thumbnail
     }
 
+
     // Funktion für die Filter-Buttons
-    private func filterButton(_ title: String) -> some View {
+    func filterButton(_ title: String) -> some View {
 
         Button {
             selectedFilter = title
@@ -252,9 +268,7 @@ struct ProjectView: View {
     }
 }
 
-
 #Preview {
     ProjectView()
 }
-
-
+    
