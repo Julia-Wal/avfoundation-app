@@ -8,22 +8,27 @@
 import SwiftUI
 import AVFoundation
 
+
 enum CameraMode: String, CaseIterable {
     case photo = "Foto"
     case video = "Video"
 }
 
 struct CameraView: View {
+
     @StateObject private var cameraManager = CameraManager()
     @State private var mode: CameraMode = .photo
-    
+
     var body: some View {
+
         ZStack {
             CameraBackgroundView(
                 isAuthorized: cameraManager.isAuthorized,
                 session: cameraManager.session,
                 cameraManager: cameraManager
             )
+            .ignoresSafeArea()
+
             VStack {
                 TopThumbnailView(image: cameraManager.lastCapturedImage)
                 Spacer()
@@ -32,15 +37,30 @@ struct CameraView: View {
                 HStack {
                     Spacer()
                     HStack(spacing: 15) {
-                        ModePickerView(mode: $mode, isRecording: cameraManager.isRecording)
-                            .frame(width: 180)
+                        ModePickerView(
+                            mode: $mode,
+                            isRecording: cameraManager.isRecording
+                        )
+                        .frame(width: 180)
                         CameraSwitchButton(cameraManager: cameraManager)
                     }
                     Spacer()
                 }
                 .padding(.bottom, 40)
             }
+            VStack(spacing: 0) {
+                Color.black.opacity(0.35)
+                    .frame(height: 100)
+
+                Spacer()
+
+                Color.black.opacity(0.35)
+                    .frame(height: 100)
+            }
+            .ignoresSafeArea()
+            .allowsHitTesting(false)
         }
+        .ignoresSafeArea()
     }
 }
 

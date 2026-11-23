@@ -1,29 +1,51 @@
 import SwiftUI
 import AVFoundation
 
-enum BottomBarSelectedTab {
-    case camera
-    case project
-    case textToSpeech
+enum BottomBarSelectedTab: Int {
+    case camera = 0
+    case project = 1
+    case textToSpeech = 2
 }
 
 struct ContentView: View {
-    @State var selectedTab: BottomBarSelectedTab = .project
+    @State private var selectedTab: Int = BottomBarSelectedTab.project.rawValue
     // initialisiert mit Project
 
     var body: some View {
         VStack(spacing: 0) {
-            Group {
-                switch selectedTab {
-                case .camera: CameraView()
-                case .project: ProjectView()
-                case .textToSpeech: TextToSpeechView()
-                }
+            // Horizontaler Swipe = View wechsel
+            TabView(selection: $selectedTab) {
+
+                CameraView()
+                    .tag(BottomBarSelectedTab.camera.rawValue)
+
+                ProjectView()
+                    .tag(BottomBarSelectedTab.project.rawValue)
+
+                TextToSpeechView()
+                    .tag(BottomBarSelectedTab.textToSpeech.rawValue)
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .animation(.easeInOut(duration: 0.25), value: selectedTab)
+            .ignoresSafeArea(
+                     edges: selectedTab == BottomBarSelectedTab.camera.rawValue
+                         ? .all
+                         : []
+                 )
+            
 
-            Spacer(minLength: 0)
-
-            BottomBar(selectedTab: $selectedTab)
+            // BottomBar nicht in CameraView anzeigne
+            if selectedTab != BottomBarSelectedTab.camera.rawValue {
+                BottomBar(selectedTab: Binding(
+                        get: {
+                            BottomBarSelectedTab(rawValue: selectedTab) ?? .project
+                        },
+                        set: {
+                            selectedTab = $0.rawValue
+                        }
+                    )
+                )
+            }
         }
     }
 }
