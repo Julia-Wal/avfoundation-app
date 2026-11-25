@@ -41,6 +41,34 @@ struct ProjectView: View {
     @State private var newestFirst = true // newest first standard
     @State private var selectedItems: [PhotosPickerItem] = []
 
+    private var filteredThumbnails: [MediaThumbnail] {
+        var items = mediaStore.mediaThumbnails
+
+        switch selectedFilter {
+        case "Pictures":
+            items = items.filter { $0.project.type == .picture }
+        case "Videos":
+            items = items.filter { $0.project.type == .video }
+        default:
+            break
+        }
+
+        if !searchText.isEmpty {
+            items = items.filter {
+                $0.project.name.localizedCaseInsensitiveContains(searchText) ||
+                $0.project.fileName.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+
+        items.sort { first, second in
+            newestFirst
+                ? first.project.createdAt > second.project.createdAt
+                : first.project.createdAt < second.project.createdAt
+        }
+
+        return items
+    }
+
     var body: some View {
 
         VStack(spacing: 16) {
@@ -84,15 +112,15 @@ struct ProjectView: View {
             }
             .padding(.horizontal)
 
-            // Anzeige des ausgewählten Bildes oder Platzhalter
-            if !mediaStore.mediaThumbnails.isEmpty {
+            // Anzeige der ausgewählten Medien oder Platzhalter
+            if !filteredThumbnails.isEmpty {
 
                 ScrollView {
                     LazyVGrid(
                         columns: [GridItem(.adaptive(minimum: 100))],
                         spacing: 10
                     ) {
-                        ForEach(mediaStore.mediaThumbnails) { media in
+                        ForEach(filteredThumbnails) { media in
                             VStack(alignment: .leading, spacing: 4) {
 
                                 ZStack {
@@ -133,7 +161,11 @@ struct ProjectView: View {
                 ContentUnavailableView(
                     "No Projects",
                     systemImage: "photo.on.rectangle.angled",
-                    description: Text("Your saved projects will appear here.")
+                    description: Text(
+                        mediaStore.mediaThumbnails.isEmpty
+                            ? "Your saved projects will appear here."
+                            : "No projects match the current filter."
+                    )
                 )
             }
 
