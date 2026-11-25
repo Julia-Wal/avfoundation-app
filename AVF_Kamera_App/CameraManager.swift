@@ -8,6 +8,7 @@
 import AVFoundation
 import UIKit
 import Photos
+import CoreMedia
 
 // Basically das Backend, wo die AVCaptureSession liegt, die unsere Inputs und Outputs verwaltet sowie Berechtigungen einholt
 class CameraManager: NSObject, ObservableObject {
@@ -242,6 +243,22 @@ class CameraManager: NSObject, ObservableObject {
             }
         }
     }
+
+    private func generateVideoThumbnail(url: URL) -> UIImage? {
+        let asset = AVURLAsset(url: url)
+        let imgGenerator = AVAssetImageGenerator(asset: asset)
+        imgGenerator.appliesPreferredTrackTransform = true
+
+        guard let cgImage = try? imgGenerator.copyCGImage(
+            at: CMTimeMake(value: 0, timescale: 1),
+            actualTime: nil
+        ) else {
+            print("*** Error generating video thumbnail")
+            return nil
+        }
+
+        return UIImage(cgImage: cgImage)
+    }
 }
 
 extension CameraManager: AVCapturePhotoCaptureDelegate {
@@ -296,6 +313,19 @@ extension CameraManager: AVCaptureFileOutputRecordingDelegate {
         if let error = error {
             print("Fehler bei der Videoaufnahme: \(error.localizedDescription)")
             return
+        }
+
+        let project = Project(
+            name: "Video",
+            type: .video,
+            fileName: outputFileURL.lastPathComponent
+        )
+        let thumbnail = generateVideoThumbnail(url: outputFileURL)
+
+        Task { @MainActor in
+            if let thumbnail {
+                self.mediaStore.safeImageToProjects(project, image: thumbnail)
+            }
         }
 
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
