@@ -11,6 +11,7 @@ import SwiftUI
 import PhotosUI
 import AVFoundation
 import Combine
+import UniformTypeIdentifiers
 
 // Struct speichert nur Infos für Darstellung
 struct MediaThumbnail: Identifiable {
@@ -192,6 +193,20 @@ struct ProjectView: View {
                 mediaStore.mediaThumbnails = []
 
                 for item in newValue {
+                    let isVideo = item.supportedContentTypes.contains { $0.conforms(to: .movie) }
+
+                    if isVideo {
+                        if let movie = try? await item.loadTransferable(type: VideoFile.self) {
+                            let project = Project(
+                                name: "Video",
+                                type: .video,
+                                fileName: movie.url.lastPathComponent
+                            )
+
+                            addProject(project, url: movie.url)
+                        }
+                        continue
+                    }
 
                     // Prüfen, ob es ein Bild ist
                     if let data = try? await item.loadTransferable(type: Data.self) {
@@ -209,20 +224,6 @@ struct ProjectView: View {
                         )
 
                         addProject(project, url: url)
-
-                        continue
-                    }
-
-                    // Falls kein Bild: Video laden
-                    if let movie = try? await item.loadTransferable(type: VideoFile.self) {
-
-                        let project = Project(
-                            name: "Video",
-                            type: .video,
-                            fileName: movie.url.lastPathComponent
-                        )
-
-                        addProject(project, url: movie.url)
                     }
                 }
             }
