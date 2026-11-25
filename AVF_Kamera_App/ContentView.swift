@@ -11,15 +11,24 @@ struct ContentView: View {
     @State private var selectedTab: Int = BottomBarSelectedTab.project.rawValue
     // initialisiert mit Project
 
+    @StateObject private var mediaStore: MediaStore
+    @StateObject private var cameraManager: CameraManager
+
+    init() {
+        let store = MediaStore()
+        _mediaStore = StateObject(wrappedValue: store)
+        _cameraManager = StateObject(wrappedValue: CameraManager(mediaStore: store))
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             // Horizontaler Swipe = View wechsel
             TabView(selection: $selectedTab) {
 
-                CameraView()
+                CameraView(cameraManager: cameraManager)
                     .tag(BottomBarSelectedTab.camera.rawValue)
 
-                ProjectView()
+                ProjectView(mediaStore: mediaStore)
                     .tag(BottomBarSelectedTab.project.rawValue)
 
                 TextToSpeechView()
@@ -28,15 +37,15 @@ struct ContentView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut(duration: 0.25), value: selectedTab)
             .ignoresSafeArea(
-                     edges: selectedTab == BottomBarSelectedTab.camera.rawValue
-                         ? .all
-                         : []
-                 )
-            
+                edges: selectedTab == BottomBarSelectedTab.camera.rawValue
+                    ? .all
+                    : []
+            )
 
             // BottomBar nicht in CameraView anzeigne
             if selectedTab != BottomBarSelectedTab.camera.rawValue {
-                BottomBar(selectedTab: Binding(
+                BottomBar(
+                    selectedTab: Binding(
                         get: {
                             BottomBarSelectedTab(rawValue: selectedTab) ?? .project
                         },
@@ -52,7 +61,7 @@ struct ContentView: View {
 
 struct BottomBar: View {
     @Binding var selectedTab: BottomBarSelectedTab
-    
+
     // Navigation Elemente mit Funktion tabButton()
     var body: some View {
         HStack {
@@ -103,7 +112,6 @@ struct BottomBar: View {
         }
         .buttonStyle(.plain)
     }
-    
 }
 
 #Preview {

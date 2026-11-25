@@ -15,8 +15,8 @@ enum CameraMode: String, CaseIterable {
 }
 
 struct CameraView: View {
-
-    @StateObject private var cameraManager = CameraManager()
+    @ObservedObject var cameraManager: CameraManager
+    //@StateObject private var cameraManager = CameraManager()
     @State private var mode: CameraMode = .photo
 
     var body: some View {

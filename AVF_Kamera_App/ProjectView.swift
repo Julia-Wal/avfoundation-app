@@ -7,10 +7,10 @@
 
 // User interface
 
-
 import SwiftUI
 import PhotosUI
 import AVFoundation
+import Combine
 
 // Struct speichert nur Infos für Darstellung
 struct MediaThumbnail: Identifiable {
@@ -19,26 +19,40 @@ struct MediaThumbnail: Identifiable {
     let project: Project // Thumbnail nur wenn Video obv
 }
 
+class MediaStore: ObservableObject {
+    @Published var mediaThumbnails: [MediaThumbnail] = []
+
+    func safeImageToProjects(_ project: Project, image: UIImage) {
+        mediaThumbnails.append(
+            MediaThumbnail(
+                image: image,
+                project: project
+            )
+        )
+    }
+}
+
 struct ProjectView: View {
+
+    @ObservedObject var mediaStore: MediaStore
 
     @State private var selectedFilter = "All"
     @State private var searchText = ""
     @State private var newestFirst = true // newest first standard
     @State private var selectedItems: [PhotosPickerItem] = []
-    @State private var mediaThumbnails: [MediaThumbnail] = [] // Alle Pics sammeln
 
     var body: some View {
-        
+
         VStack(spacing: 16) {
-            
+
             // Titel
             HStack {
                 Text("Projects")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                
+
                 Spacer()
-                
+
                 // Sort button
                 Button {
                     newestFirst.toggle()
@@ -48,19 +62,19 @@ struct ProjectView: View {
                 }
             }
             .padding(.horizontal)
-            
+
             // Suchleiste
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(.gray)
-                
+
                 TextField("Search projects...", text: $searchText)
             }
             .padding(10)
             .background(.gray.opacity(0.1))
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.horizontal)
-            
+
             // Filter
             HStack {
                 filterButton("All")
@@ -68,21 +82,19 @@ struct ProjectView: View {
                 filterButton("Videos")
                 Spacer()
             }
-            
-            //.padding(.leading, 16)
             .padding(.horizontal)
-            
+
             // Anzeige des ausgewählten Bildes oder Platzhalter
-            if !mediaThumbnails.isEmpty {
-                
+            if !mediaStore.mediaThumbnails.isEmpty {
+
                 ScrollView {
                     LazyVGrid(
                         columns: [GridItem(.adaptive(minimum: 100))],
                         spacing: 10
                     ) {
-                        ForEach(mediaThumbnails) { media in
+                        ForEach(mediaStore.mediaThumbnails) { media in
                             VStack(alignment: .leading, spacing: 4) {
-                                
+
                                 ZStack {
                                     Image(uiImage: media.image)
                                         .resizable()
@@ -90,7 +102,7 @@ struct ProjectView: View {
                                         .frame(width: 100, height: 100)
                                         .clipped()
                                         .cornerRadius(12)
-                                    
+
                                     // Play-Symbol bei Videos
                                     if media.project.type == .video {
                                         Image(systemName: "play.circle.fill")
@@ -99,32 +111,32 @@ struct ProjectView: View {
                                             .shadow(radius: 4)
                                     }
                                 }
-                                
+
                                 // Dateiname
                                 Text(media.project.name)
                                     .font(.caption)
                                     .fontWeight(.medium)
                                     .lineLimit(1)
-                                
+
                                 // Erstellungsdatum
                                 Text(media.project.createdAt, style: .date)
                                     .font(.caption2)
-                                .foregroundStyle(.secondary)
+                                    .foregroundStyle(.secondary)
                             }
                         }
                     }
                     .padding()
                 }
-                
+
             } else {
-                
+
                 ContentUnavailableView(
                     "No Projects",
                     systemImage: "photo.on.rectangle.angled",
                     description: Text("Your saved projects will appear here.")
                 )
             }
-            
+
             PhotosPicker(
                 selection: $selectedItems,
                 maxSelectionCount: 20,
@@ -142,50 +154,49 @@ struct ProjectView: View {
             .padding(.bottom, 12)
         }
         .padding(.top)
-        
-        .onChange(of: selectedItems) {oldValue, newValue in
+
+        .onChange(of: selectedItems) { oldValue, newValue in
             Task {
-                mediaThumbnails = []
-                
+                mediaStore.mediaThumbnails = []
+
                 for item in newValue {
-                    
+
                     // Prüfen, ob es ein Bild ist
-                    if let data = try? await item.loadTransferable(type: Data.self),
-                       let image = UIImage(data: data) {
-                        
+                    if let data = try? await item.loadTransferable(type: Data.self) {
+
                         // Bild vorerst temporär speichern
                         let url = FileManager.default.temporaryDirectory
                             .appendingPathComponent(UUID().uuidString + ".jpg")
-                        
+
                         try? data.write(to: url)
-                        
+
                         let project = Project(
                             name: "Bild",
                             type: .picture,
                             fileName: url.lastPathComponent
                         )
-                        
+
                         addProject(project, url: url)
-                        
+
                         continue
                     }
-                    
+
                     // Falls kein Bild: Video laden
                     if let movie = try? await item.loadTransferable(type: VideoFile.self) {
-                        
+
                         let project = Project(
                             name: "Video",
                             type: .video,
                             fileName: movie.url.lastPathComponent
                         )
-                        
+
                         addProject(project, url: movie.url)
                     }
                 }
             }
         }
     }
-    
+
     struct VideoFile: Transferable {
         let url: URL
 
@@ -205,7 +216,7 @@ struct ProjectView: View {
             }
         }
     }
-    
+
     func addProject(_ project: Project, url: URL) {
         var thumbnail: UIImage?
 
@@ -216,16 +227,10 @@ struct ProjectView: View {
         }
 
         if let thumbnail = thumbnail {
-            mediaThumbnails.append(
-                MediaThumbnail(
-                    image: thumbnail,
-                    project: project
-                )
-            )
+            mediaStore.safeImageToProjects(project, image: thumbnail)
         }
     }
-    
-    
+
     func generateThumbnail(url: URL) -> UIImage? {
 
         let asset = AVURLAsset(url: url)
@@ -244,7 +249,6 @@ struct ProjectView: View {
         let thumbnail = UIImage(cgImage: cgImage)
         return thumbnail
     }
-
 
     // Funktion für die Filter-Buttons
     func filterButton(_ title: String) -> some View {
@@ -269,6 +273,5 @@ struct ProjectView: View {
 }
 
 #Preview {
-    ProjectView()
+    ProjectView(mediaStore: MediaStore())
 }
-    
