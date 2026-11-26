@@ -83,7 +83,39 @@ class CameraManager: NSObject, ObservableObject {
 
         return nil
     }
+    
+    
+    
+    private func setupCaptureDevice() throws {
+        session.beginConfiguration()
+        defer { session.commitConfiguration() }
+        
+        if self.session.canSetSessionPreset(.high) {
+            self.session.sessionPreset = .high
+        }
 
+        guard let videoDevice = self.getBestCamera(
+            position: self.cameraPosition
+        ) else {
+            print("No suitable camera available.")
+            self.session.commitConfiguration()
+            return
+        }
+        let videoInput = try AVCaptureDeviceInput(device: videoDevice)
+        if self.session.canAddInput(videoInput) {
+            self.session.addInput(videoInput)
+        }
+
+        if self.session.canAddOutput(self.photoOutput) {
+            self.session.addOutput(self.photoOutput)
+        }
+
+        if self.session.canAddOutput(self.movieOutput) {
+            self.session.addOutput(self.movieOutput)
+        }
+    }
+    
+    
     private func setupSession() {
         sessionQueue.async { [weak self] in
             guard let self = self else { return }
@@ -102,7 +134,6 @@ class CameraManager: NSObject, ObservableObject {
                     self.session.commitConfiguration()
                     return
                 }
-
                 let videoInput = try AVCaptureDeviceInput(device: videoDevice)
                 if self.session.canAddInput(videoInput) {
                     self.session.addInput(videoInput)

@@ -50,7 +50,7 @@ struct TextToSpeechView: View {
                         utterance.volume = 0.8
                         
                         utterance.voice =
-                        AVSpeechSynthesisVoice(language: "de-DE")
+                        AVSpeechSynthesisVoice(language: "en-EN")
                         
                         // Sprachausgabe starten
                         synthesizer.speak(utterance)
