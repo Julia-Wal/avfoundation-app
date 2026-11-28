@@ -19,6 +19,8 @@ struct ContentView: View {
         _mediaStore = StateObject(wrappedValue: store)
         _cameraManager = StateObject(wrappedValue: CameraManager(mediaStore: store))
     }
+    
+    @State private var isKeyboardVisible = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -42,8 +44,8 @@ struct ContentView: View {
                     : []
             )
 
-            // BottomBar nicht in CameraView anzeigne
-            if selectedTab != BottomBarSelectedTab.camera.rawValue {
+            // BottomBar nicht in CameraView und nicht wenn Keyboard true ist anzeigen
+            if selectedTab != BottomBarSelectedTab.camera.rawValue && !isKeyboardVisible{
                 BottomBar(
                     selectedTab: Binding(
                         get: {
@@ -55,6 +57,20 @@ struct ContentView: View {
                     )
                 )
             }
+        }
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: UIResponder.keyboardDidShowNotification
+            )
+        ) { _ in
+            isKeyboardVisible = true
+        }
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: UIResponder.keyboardDidHideNotification
+            )
+        ) { _ in
+            isKeyboardVisible = false
         }
     }
 }
